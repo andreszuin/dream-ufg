@@ -1,0 +1,153 @@
+<div class="header">
+  <span class="title">{{'ReusarPadroes.Title' | translate}}</span>
+</div>
+
+<div class="info">
+  <div class="row" style="margin-bottom: 25px">
+    <button pButton icon="pi pi-arrow-left" class="botao2" (click)="voltarProjeto()"></button>
+  </div>
+
+  <div class="row">
+    <div class="column3">
+      <p-treeTable [value]="files" [columns]="cols" selectionMode="single" [(selection)]="selectedNode" dataKey="name">
+        <ng-template pTemplate="header" let-rowNode let-columns>
+          <tr [ttRow]="rowNode">
+            <th *ngFor="let col of columns" [style.width] = 'col.width'>
+              {{col.header}}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+          <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode" [ngClass]="{'false-row': rowData.reused === false, 'true-row': rowData.reused === true}" *ngIf="rowData.tipo === 'bag' || rowData.tipo === 'catalogue' || rowData.tipo === 'softwarepattern'">
+            <td *ngFor="let col of columns; let i = index" class="bold">
+              <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+      </p-treeTable>
+    </div>
+    <div class="columnInfo">
+      <div class="card">
+        <div class="catInfo" id="catInfo" *ngIf="selectedNode.data.tipo == 'catalogue'">
+          <div class="row">
+            <span class="title2 large">{{'ReusarPadroes.Reuse' | translate}}</span><p-checkbox [(ngModel)]="this.selectedNode.data.reused" binary="true" inputId="binary" (ngModelChange)="reusar()"></p-checkbox>
+          </div>
+          <div class="row">
+            <span class="title2 larger">{{'AssociarCatalogo.Name' | translate}}</span><span class="larger bold">{{this.selectedNode.data.name}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Version' | translate}}</span><span class="large">{{this.selectedNode.data.version}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.User' | translate}}</span><span class="large">{{this.selectedNode.data.version}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Time' | translate}}</span><span class="large">{{this.selectedNode.data.version}}</span>
+          </div>
+        </div>
+        <div class="bagInfo" id="bagInfo" *ngIf="selectedNode.data.tipo == 'bag'">
+          <div class="row">
+            <span class="title2 large">{{'ReusarPadroes.Reuse' | translate}}</span><p-checkbox [(ngModel)]="this.selectedNode.data.reused" binary="true" inputId="binary" (ngModelChange)="reusar()"></p-checkbox>
+          </div>
+          <div class="row">
+            <span class="title2 larger">{{'AssociarCatalogo.Name' | translate}}</span><span class="larger bold">{{this.selectedNode.data.name}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Intent' | translate}}</span><span class="large">{{this.selectedNode.data.intent}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Keywords' | translate}}</span><span class="large">{{this.selectedNode.data.keywords}}</span>
+          </div>
+        </div>
+        <div class="patInfo" id="patInfo" *ngIf="selectedNode.data.tipo == 'softwarepattern'">
+          <div class="row">
+            <span class="title2 large">{{'ReusarPadroes.Reuse' | translate}}</span><p-checkbox [(ngModel)]="this.selectedNode.data.reused" binary="true" inputId="binary" (ngModelChange)="reusar()"></p-checkbox>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.name">
+            <span class="title2 larger">{{'AssociarCatalogo.Name' | translate}}</span><span class="larger bold">{{selectedNode.data.name}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.type">
+            <span class="title2 larger">{{'AssociarCatalogo.Type' | translate}}</span><span class="larger bold">{{selectedNode.data.type}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.problem">
+            <span class="title2 large">{{'AssociarCatalogo.Problem' | translate}}</span><span class="large">{{selectedNode.data.problem}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.forces">
+            <span class="title2 large">{{'AssociarCatalogo.Forces' | translate}}</span><span class="large">{{selectedNode.data.forces}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.context">
+            <span class="title2 large">{{'AssociarCatalogo.Context' | translate}}</span><span class="large">{{selectedNode.data.context}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.solution">
+            <span class="title2 large">{{'AssociarCatalogo.Solution' | translate}}</span><span class="large">{{selectedNode.data.solution}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.author">
+            <span class="title2 large">{{'AssociarCatalogo.Author' | translate}}</span><span class="large">{{selectedNode.data.author}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.version">
+            <span class="title2 large">{{'AssociarCatalogo.Version' | translate}}</span><span class="large">{{selectedNode.data.version}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.sources">
+            <span class="title2 large">{{'AssociarCatalogo.Sources' | translate}}</span><span class="large">{{selectedNode.data.sources}}</span>
+          </div>
+          <div id="functional" *ngIf="selectedNode.data.type == 'sopammV3:FunctionalReqPattern'">
+            <div class="column2" style="margin-left: 15px; margin-top: 20px" *ngFor="let func of selectedNode.children">
+              <div class="row">
+                <span class="title2 large">{{'AssociarCatalogo.Feature' | translate}}</span><span class="large bold">{{func.data.name}}</span>
+              </div>
+              <div class="column2" style="margin-left: 15px">
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.As' | translate}}</span><span class="large">{{func.data.como}}</span>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Ican' | translate}}</span><span class="large">{{func.data.euPosso}}</span>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.SoThat' | translate}}</span><span class="large">{{func.data.paraQue}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="nonfunctional" *ngIf="selectedNode.data.type == 'sopammV3:NonFunctionalReqPattern'">
+            <div class="column2" style="margin-left: 15px; margin-top: 20px" *ngFor="let sys of selectedNode.children">
+              <div class="row">
+                <span class="title2 large">{{'AssociarCatalogo.Property' | translate}}</span><div class="large example bold">{{sys.data.name}}</div>
+              </div>
+              <div class="row" style="margin-left: 15px">
+                <span class="title2 large">{{'AssociarCatalogo.Description' | translate}}</span><div class="large example">{{sys.data.description}}</div>
+              </div>
+            </div>
+          </div>
+          <div id="acceptance" *ngIf="selectedNode.data.type == 'sopammV3:AcceptanceTestPattern'">
+            <div class="column2" style="margin-left: 15px; margin-top: 20px" *ngFor="let test of selectedNode.children">
+              <div class="row">
+                <span class="title2 large">{{'AssociarCatalogo.TestCase' | translate}}</span><div class="large example bold">{{test.data.name}}</div>
+              </div>
+              <div class="column2" style="margin-left: 15px">
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Given' | translate}}</span><div class="large">{{test.data.sendoQue}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.When' | translate}}</span><div class="large">{{test.data.quando}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Then' | translate}}</span><div class="large">{{test.data.entao}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Scenario' | translate}}</span><div class="large">{{test.data.scenario}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.FunctionalRequirement' | translate}}</span><div class="large">{{test.data.functionalRequirement}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Examples' | translate}}</span><div class="large example">{{test.data.entries}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

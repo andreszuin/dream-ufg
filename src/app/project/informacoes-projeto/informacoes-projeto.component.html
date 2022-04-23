@@ -1,0 +1,91 @@
+<div class="coluna">
+  <div class="linha border">
+    <div class="card">
+      <div class="card-content">
+        <div class="rows">
+          <span class="title">{{'InformacoesProjeto.Visibility' | translate}}</span><span>{{projeto.visibility}}</span>
+        </div>
+        <div class="rows">
+          <span class="title">{{'InformacoesProjeto.Status' | translate}}</span><span>{{projeto.projectStatus}}</span>
+        </div>
+        <div class="rows">
+          <span class="title">{{'InformacoesProjeto.CompletionForecast' | translate}}</span><span>{{projeto.completionForecast}}</span>
+        </div>
+        <div class="rows">
+          <span class="title">{{'InformacoesProjeto.KeyWords' | translate}}</span><span>{{projeto.keyWordProject}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="column">
+      <div class="rows">
+        <button pButton label="{{'Button.UpdateProject' | translate}}" class="botao" (click)="showConfig()" icon="fas fa-sync" iconPos="left"></button>
+        <button pButton label="{{'Button.Members' | translate}}" class="botao"  (click)="showMembers()" icon="fas fa-users" iconPos="left"></button>
+        <button pButton label="{{'Button.Statistics' | translate}}" class="botao"  (click)="showMembers()" icon="fas fa-chart-bar" iconPos="left"></button>
+      </div>
+    </div>
+  </div>
+  <div class="linha linhaAltura">
+    <div class="container-catalogos border">
+      <div class="column">
+        <div class="rows bottom-border align">
+          <span class="title2">{{'InformacoesProjeto.Catalogues' | translate}}</span>
+          <div class="spacer"></div>
+          <button pButton label="{{'Button.ConnectCatalogue' | translate}}" class="botao"  (click)="addCatalogues()" icon="fas fa-file-import" iconPos="left" style="margin-top: 5px; width: 150px"></button>
+          <button pButton label="{{'Button.ViewPatterns' | translate}}" class="botao"  (click)="viewPatterns()" icon="fas fa-file" iconPos="left" style="margin-top: 5px; width: 150px"></button>
+        </div>
+
+          <p-dataView [value]="catalogos" [paginator]="true" [rows]="4" layout="list" class="dataView" filterBy="name">
+            <ng-template let-catalogo pTemplate="listItem">
+              <div class="p-col-12">
+                <div class="list-item">
+                  <div class="list-detail">
+                    <div class="columnDataView">
+                      <span>{{catalogo.name}}</span>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="columnDataView">
+                      <div class="rows">
+                        <span class="titles">{{'InformacoesProjeto.Version' | translate}}</span><span>{{catalogo.version}}</span>
+                      </div>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="columnDataView">
+                      <div class="rows">
+                        <button pButton label="{{'Button.Reuse' | translate}}" class="botao"(click)="reuse(catalogo)"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-dataView>
+
+      </div>
+    </div>
+    <div class="container-especificacoes border">
+      <div class="column align">
+        <div class="column align bottom-border">
+          <span class="title2">{{'InformacoesProjeto.Specifications' | translate}}</span>
+          <button pButton label="{{'Button.Requirements' | translate}}" class="botao2"  (click)="editRequirements()" icon="fas fa-list-ul" iconPos="left" style="margin-top: 5px; width: 150px"></button>
+          <button pButton label="{{'Button.TestCase' | translate}}" class="botao2"  (click)="editCases()" icon="fas fa-tasks" iconPos="left" style="margin-top: 5px; width: 150px"></button>
+        </div>
+        <div class="rows align">
+          <button pButton label="{{'Button.Agile' | translate}}" class="botao2"  (click)="addCatalogues()" icon="fas fa-clock" iconPos="left" style="margin-top: 5px"></button>
+          <button pButton label="{{'Button.Formal' | translate}}" class="botao2"  (click)="optionsFormal()" icon="fas fa-file-invoice" iconPos="left" style="margin-top: 5px"></button>
+          <button pButton label="{{'Button.Matrix' | translate}}" class="botao2"  (click)="optionsMatriz()" icon="fas fa-th" iconPos="left" style="margin-top: 5px"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-dialog header="{{'InformacoesProjeto.FormalHeader' | translate}}" [(visible)]="displayFormal">
+    <div>{{'InformacoesProjeto.FormalMessage' | translate}}</div>
+    <button pButton label="doc" class="botao"  (click)="formal('doc')" style="margin-top: 5px"></button>
+    <button pButton label="docx" class="botao"  (click)="formal('docx')" style="margin-top: 5px"></button>
+  </p-dialog>
+  <p-dialog header="{{'InformacoesProjeto.MatrixHeader' | translate}}" [(visible)]="displayMatrix">
+    <div>{{'InformacoesProjeto.MatrixMessage' | translate}}</div>
+    <button pButton label="xls" class="botao"  (click)="matriz('xls')" style="margin-top: 5px"></button>
+    <button pButton label="xlsx" class="botao"  (click)="matriz('xlsx')" style="margin-top: 5px"></button>
+  </p-dialog>
+</div>

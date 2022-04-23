@@ -1,0 +1,61 @@
+<div class="content" [formGroup]="projetoForm">
+  <h2 class="title">{{'AtualizarProjeto.Title' | translate}}</h2>
+  <!--nome-->
+  <div class="inner" style="margin-top: 25px">
+    <input id="name" placeholder="{{'Placeholder.Name' | translate}}" type="text" class="p-inputtext p-component" formControlName="name" [style]="style">
+  </div>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <div *ngIf="name.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!--calendario-->
+  <div class="inner" style="margin-top: 25px">
+    <p-calendar id="endDate" dateFormat="{{'AtualizarProjeto.CalendarDate' | translate}}" dataType="date" placeholder="{{'Placeholder.EndDate' | translate}}" [yearNavigator]="true" yearRange="1970:2040" formControlName="endDate" [style]="style" showIcon="true"></p-calendar>
+  </div>
+  <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)">
+
+    <div *ngIf="endDate.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!--tags-->
+  <div class="inner" style="margin-top: 25px">
+    <textarea id="keyWords" pInputTextarea placeholder="{{'Placeholder.Keywords' | translate}}" formControlName="keyWords" [style]="style" ></textarea>
+  </div>
+  <div *ngIf="keyWords.invalid && (keyWords.dirty || keyWords.touched)">
+
+    <div *ngIf="keyWords.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+  <!-- dropdown de visibilidade-->
+  <div class="inner" style="margin-top: 25px">
+    <p-dropdown id="visibility" dataKey="value" [options]="visibilidades" placeholder="{{'Placeholder.Visibility' | translate}}" optionLabel="label" formControlName="visibility" [style]="style"></p-dropdown>
+  </div>
+  <div *ngIf="visibility.invalid && (visibility.dirty || visibility.touched)">
+
+    <div *ngIf="visibility.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+  <!-- dropdown de status-->
+  <div class="inner" style="margin-top: 25px">
+    <p-dropdown id="status" dataKey="value" [options]="statuses" placeholder="{{'Placeholder.Status' | translate}}" optionLabel="label" formControlName="status" [style]="style"></p-dropdown>
+  </div>
+  <div *ngIf="status.invalid && (status.dirty || status.touched)">
+
+    <div *ngIf="status.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+
+  <div class="botoes" style="margin-top: 25px">
+    <button pButton type="button" [disabled]="!projetoForm.valid" label="{{'Button.UpdateProject' | translate}}" (click)="send()" class="botao"></button>
+  </div>
+</div>
+
+

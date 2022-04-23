@@ -1,0 +1,118 @@
+.coluna {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  flex: 1;
+}
+
+.rows{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.spacer{
+  flex: 1;
+}
+
+.title{
+  text-align: center;
+  color: #063E58;
+}
+
+.center{
+  margin: auto;
+}
+
+.infoTitles{
+  font-weight: bold;
+  color: #063E58;
+  margin-right: 2px;
+}
+
+.botao, .botao:hover, .botao:focus{
+  color: #063E58;
+  background-color: #ffffff;
+  border-color: #063E58;
+  align-content: center;
+  font-weight: bold;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+:host ::ng-deep .p-dropdown{
+  width: 250px;
+  border-color: #063E58;
+}
+:host ::ng-deep .p-dropdown:hover{
+  border-color: #063E58;
+}
+
+:host ::ng-deep .p-dropdown.p-focus{
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  border-color: #063E58;
+}
+
+.infoColumn{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-right: 15px;
+}
+
+.chartColumn{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card {
+  padding: 15px;
+  width: 100%;
+  border: 1px solid #063E58;
+  border-radius: 10px;
+  height: 60vh;
+  overflow: auto;
+}
+
+.chartSize{
+  width: 200px;
+}
+
+.border{
+  border-color: #063E58;
+}
+
+.info{
+  padding-bottom: 10px;
+}
+
+.name{
+  display: flex;
+  flex: 2;
+}
+
+.right{
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #063E58;
+  border-radius: 10px;
+}
+

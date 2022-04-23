@@ -1,0 +1,23 @@
+<div class="content" [formGroup]="loginForm">
+<h3 style="color: #063E58">{{'Login.Title' | translate}}</h3>
+
+
+<div class="inner" style="margin-top: 25px">
+  <input id="username" placeholder="{{'Placeholder.User' | translate}}" type="text" class="p-inputtext p-component" formControlName="username">
+</div>
+
+<div class="inner" style="margin-top: 25px; margin-bottom: 25px">
+  <input id="password" placeholder="{{'Placeholder.Password' | translate}}" type="password" class="p-inputtext p-component" formControlName="password">
+</div>
+  <div>
+    <p-captcha siteKey="6Ld4f-EeAAAAAIafa_8XjPuNhvE-lx36TjM3EF8k" (onResponse)="showResponse($event)"></p-captcha>
+  </div>
+  <div class="links" style="margin-top: 10px">
+    <div class="spacer"></div>
+    <a routerLink="../recuperarSenha" routerLinkActive="active">{{'Login.ForgotPassword' | translate}}</a>
+  </div>
+  <div class="botoes" style="margin-top: 25px">
+    <div class="column"><button pButton type="button" label="{{'Button.Login' | translate}}" class="login" (click)=fazerLogin()></button></div>
+    <div class="column"><button pButton type="button" label="{{'Button.Register' | translate}}" class="cadastro" routerLink="../cadastro" routerLinkActive="active"></button></div>
+  </div>
+</div>

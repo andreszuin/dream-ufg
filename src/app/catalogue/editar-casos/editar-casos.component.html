@@ -1,0 +1,56 @@
+<div class="header">
+  <span class="title">{{'EditarCasos.Title' | translate}}</span>
+</div>
+<div class="info" id="info">
+  <div class="row" style="margin-bottom: 25px">
+    <button pButton icon="pi pi-arrow-left" class="botao2" (click)="voltarProjeto()"></button>
+  </div>
+
+  <div class="row">
+    <div class="column3">
+      <p-treeTable [value]="files" [columns]="cols" selectionMode="single" [(selection)]="selectedNode" dataKey="name">
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+          <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">
+            <td *ngFor="let col of columns; let i = index">
+              <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+      </p-treeTable>
+    </div>
+    <div class="columnInfo">
+      <div class="card">
+        <div class="testInfo padding" id="testInfo" *ngIf="selectedNode.data.tipo == 'testcase'">
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.Name' | translate}}</span><input type="text" class="input" pInputText [(ngModel)]="selectedNode.data.name">
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'EditarCasos.Id' | translate}}</span><span class="id">{{this.selectedNode.data.tcId}}</span>
+            <span class="title firstRow">{{'EditarCasos.Priority' | translate}}</span><input type="text" class="input" pInputText [(ngModel)]="selectedNode.data.priority">
+            <span class="title firstRow">{{'EditarCasos.Mandatory' | translate}}</span><p-checkbox class="id" [(ngModel)]="this.selectedNode.data.mandatory" binary="true" inputId="binary"></p-checkbox>
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.Given' | translate}}</span><input type="text" class="input" pInputText [(ngModel)]="selectedNode.data.sendoQue">
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.When' | translate}}</span><input type="text" class="input" pInputText [(ngModel)]="selectedNode.data.quando">
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.Then' | translate}}</span><input type="text" class="input" pInputText [(ngModel)]="selectedNode.data.entao">
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.Scenario' | translate}}</span><span>{{this.selectedNode.data.scenario}}</span>
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.FunctionalRequirement' | translate}}</span><span>{{this.selectedNode.data.functionalRequirement}}</span>
+          </div>
+          <div class="row padding">
+            <span class="title firstRow">{{'AssociarCatalogo.Examples' | translate}}</span><textarea type="text" class="input" style="height: 150px" pInputTextarea [(ngModel)]="selectedNode.data.entries"></textarea>
+          </div>
+          <button pButton label="{{'Button.Save' | translate}}" class="botao" (click)="save()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "/api": {
+    "target": "http://localhost:9001",
+    "secure": true
+  },
+  "/login": {
+    "target": "http://localhost:9001/oauth/token",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/login": ""
+    }
+  }
+}
+

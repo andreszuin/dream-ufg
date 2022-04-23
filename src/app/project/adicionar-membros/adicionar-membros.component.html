@@ -1,0 +1,42 @@
+<button pButton icon="pi pi-arrow-left" class="botao2" (click)="voltar()"></button>
+<div class="main">
+  <div class="row">
+    <h2>{{'AdicionarMembro.Title' | translate}}</h2>
+  </div>
+  <div class="row">
+    <span style="margin-bottom: 25px">{{'AdicionarMembro.SubTitle' | translate}}</span>
+  </div>
+  <div class="row">
+    <div class="column">
+      <div class="row">
+        <span class="p-float-label">
+          <input id="float-input" type="text" pInputText [(ngModel)]="email">
+          <label for="float-input">{{'AdicionarMembro.Email' | translate}}</label>
+        </span>
+        <button pButton icon="pi pi-search" class="botao"(click)="encontrarUsuario()"></button>
+      </div>
+      <div *ngIf="errorMessage === 'Usuário não encontrado'">
+        <p-message severity="error" text="{{'AdicionarMembro.UserNotFound' | translate}}" [style]="style"></p-message>
+      </div>
+      <div *ngIf="errorMessage === 'É membro'">
+        <p-message severity="error" text="{{'AdicionarMembro.IsMember' | translate}}" [style]="style"></p-message>
+      </div>
+      <div class="singleCard">
+        <img [src]="'assets/users/images/' + selectedUser.photo" [alt]="selectedUser.name"/>
+        <div class="singleCard-content">
+          <div>{{selectedUser.name}}</div>
+          <div>{{selectedUser.email}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <span style="width: 70%; text-align: center"> {{'AdicionarMembro.Options' | translate}}</span>
+      <p-listbox [options]="papeis" [(ngModel)]="papelSelecionado" [multiple]="false" [checkbox]="true" optionLabel="name" class="listbox"></p-listbox>
+    </div>
+  </div>
+  <div class="row">
+      <div class="botoes" style="margin-top: 25px">
+        <div class="column"><button pButton label="{{'Button.Add' | translate}}" class="botao" (click)="adicionar()"></button></div>
+      </div>
+  </div>
+</div>

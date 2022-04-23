@@ -1,0 +1,67 @@
+<div class="coluna">
+  <h2 class="title">{{catalogo.name}}</h2>
+  <div class="rows">
+    <button pButton icon="pi pi-arrow-left" class="botao" (click)="voltar()"></button>
+    <div class="spacer"></div>
+    <div class="rows right">
+      <div class="spacer"></div>
+      <div style="margin-right: 5px">{{'Relatorio.Project' | translate}}</div>
+      <p-dropdown [options]="projects" [(ngModel)]="selectedProject" placeholder="{{'Placeholder.SelectProject' | translate}}" optionLabel="label" [showClear]="true" (ngModelChange)="preencherGrafico()"></p-dropdown>
+    </div>
+  </div>
+  <p-tabView>
+    <p-tabPanel header="{{'Relatorio.Info' | translate}}">
+      <p-dropdown [options]="types" [(ngModel)]="selectedType" placeholder="{{'Placeholder.SelectType' | translate}}" optionLabel="label" [showClear]="true"></p-dropdown>
+      <div class="rows border info">
+        <div class="column name">
+          <div class="rows">
+            <span class="infoTitles">{{'Relatorio.Pattern' | translate}} </span>
+          </div>
+        </div>
+        <div class="column">
+          <div class="rows">
+            <span class="infoTitles">{{'Relatorio.ReuseNoMod' | translate}} </span>
+          </div>
+        </div>
+        <div class="column">
+          <div class="rows">
+            <span class="infoTitles">{{'Relatorio.ReuseMod' | translate}} </span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div *ngFor="let stat of selectedProject.value">
+          <div class="rows border info" *ngIf="stat.tipo == selectedType.value">
+            <div class="column name">
+              <div class="rows">
+                {{stat.nome}}
+              </div>
+            </div>
+            <div class="column">
+              <div class="rows center">
+                {{stat.reusado}}
+              </div>
+            </div>
+            <div class="column">
+              <div class="rows center">
+                {{stat.modificado}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </p-tabPanel>
+
+    <p-tabPanel header="{{'Relatorio.Charts' | translate}}">
+      <div class="rows">
+        <div class="column">
+          <p-chart type="horizontalBar" [data]="dataSet" [options]="horizontalOptions"></p-chart>
+        </div>
+        <div class="column">
+          <p-chart type="horizontalBar" [data]="dataSet2" [options]="horizontalOptions"></p-chart>
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

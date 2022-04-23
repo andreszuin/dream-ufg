@@ -1,0 +1,11 @@
+<div class="main">
+  <span class="title" i18n>{{'GerenciarPapeis.UpdateButtonLabel' | translate:param}}</span>
+  <div class="rows">
+    <div class="column">
+      <p-listbox [options]="papeis" [(ngModel)]="papelSelecionado" [multiple]="false" [checkbox]="true" optionLabel="name"></p-listbox>
+      <div class="botoes" style="margin-top: 25px">
+        <button pButton label="{{'Button.Update' | translate}}" class="botao"  (click)="modificar()"></button>
+      </div>
+    </div>
+  </div>
+</div>

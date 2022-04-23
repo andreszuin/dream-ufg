@@ -1,0 +1,68 @@
+.spacer{
+  flex: 1;
+}
+
+.card {
+  width: 80vw;
+  height: 50vh;
+  display: flex;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-direction: column;
+  border: #063E58 1px solid;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.title{
+  color: #063E58;
+  font-weight: bold;
+  font-size: large;
+}
+
+.text {
+  color: #063E58;
+  font-weight: bold;
+}
+
+.row{
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+.column{
+  flex-direction: column;
+  align-items: center;
+}
+.confirmar, .confirmar:hover, .confirmar:focus{
+  color: #ffffff;
+  background-color: #063E58;
+  border-color: #063E58;
+  align-content: center;
+  font-weight: bold;
+  margin-right: 20px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.upload, .upload:hover, .upload:focus{
+  color: black;
+  background-color: #C4C4C4;
+  border-color: black;
+  align-content: center;
+  height: 40px;
+  margin-right: 20px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}

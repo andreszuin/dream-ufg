@@ -1,0 +1,121 @@
+<div class="coluna" id="perfil">
+  <h2 class="title">{{'Perfil.Title' | translate}}</h2>
+  <div class="linha">
+    <img [src]="'assets/users/images/' + foto" class="image">
+  </div>
+  <div class="linha">
+    <div class="label" >{{'Perfil.Name' | translate}}</div>
+    <div class="conteudo">{{nome}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="linha">
+    <div class="label">{{'Perfil.BirthDate' | translate}}</div>
+    <div class="conteudo">{{dataNasc}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="linha">
+    <div class="label">{{'Perfil.Gender' | translate}}</div>
+    <div class="conteudo">{{genero}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="linha">
+    <div class="label">{{'Perfil.Email' | translate}}</div>
+    <div class="conteudo">{{email}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="botoes" style="margin-top: 25px">
+    <div class="spacer"></div>
+    <button pButton type="button" label="{{'Button.Password' | translate}}" (click)="modificar()" class="botao1"></button>
+    <button pButton type="button" label="{{'Button.UpdateProfile' | translate}}" (click)="atualizar()" class="botao2"></button>
+    <div class="spacer"></div>
+  </div>
+</div>
+
+<div class="colunaForms" id="atualizar" [formGroup]="userForm" style="display: none">
+  <h2 class="title">{{'Perfil.Title' | translate}}</h2>
+  <span>{{'Perfil.EditProfile' | translate}}</span>
+
+  <div class="inner">
+    <img [src]="'assets/users/images/' + foto" class="image">
+    <button pButton type="button" label="{{'Button.UploadPhoto' | translate}}" (click)="fileInput.click()" class="upload">
+      <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+    </button>
+  </div>
+  <!--nome-->
+  <div class="inner" style="margin-top: 5px">
+    <input id="name" placeholder="{{'Placeholder.Name' | translate}}" type="text" class="p-inputtext p-component" formControlName="name" [style]="style">
+  </div>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <div *ngIf="name.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!-- dropdown de generos-->
+  <div class="inner" style="margin-top: 5px">
+    <p-dropdown id="genero" dataKey="value" [options]="generos" placeholder="{{'Placeholder.Gender' | translate}}" optionLabel="label" formControlName="gender" [style]="style"></p-dropdown>
+  </div>
+  <div *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+
+    <div *ngIf="gender.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!--calendario-->
+  <div class="inner" style="margin-top: 5px">
+    <p-calendar id="birthDate" dateFormat="{{'Perfil.CalendarDate' | translate}}" dataType="date" placeholder="{{'Placeholder.BirthDate' | translate}}" [yearNavigator]="true" yearRange="1970:2040" formControlName="birthDate" [style]="style" showIcon="true"></p-calendar>
+  </div>
+  <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+
+    <div *ngIf="birthDate.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <div class="botoes" style="margin-top: 5px">
+    <div class="spacer"></div>
+    <button pButton type="button" label="{{'Button.Confirm' | translate}}" (click)="confirmarAtualizar()" class="botao1"></button>
+    <button pButton type="button" label="{{'Button.Cancel' | translate}}" (click)="atualizar()" class="botao2"></button>
+    <div class="spacer"></div>
+  </div>
+</div>
+
+<div class="colunaForms" id="modificar" [formGroup]="passForm" style="display: none">
+  <h2 class="title">{{'Perfil.Title' | translate}}</h2>
+  <span>{{'Perfil.ChangePassword' | translate}}</span>
+  <div class="inner" style="margin-top: 25px">
+        <input id="oldPassword" pPassword placeholder="{{'Placeholder.CurrentPassword' | translate}}" type="password" class="p-inputtext p-component" formControlName="oldPass" feedback="true" [style]="style" >
+  </div>
+  <div *ngIf="oldPassword.invalid && (oldPassword.dirty || oldPassword.touched)">
+
+    <div *ngIf="oldPassword.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+  <div class="inner" style="margin-top: 25px">
+        <input id="password" pPassword placeholder="{{'Placeholder.NewPassword' | translate}}" type="password" class="p-inputtext p-component" formControlName="password" feedback="true" [style]="style" >
+  </div>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+
+    <div *ngIf="password.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+  <div class="inner" style="margin-top: 25px">
+        <input id="psswdConf" pPassword placeholder="{{'Placeholder.ConfirmPassword' | translate}}" type="password" class="p-inputtext p-component" formControlName="psswdConf" feedback="true" [style]="style">
+  </div>
+  <div *ngIf="passForm.hasError('passwordnotmatching') && (passForm.get('psswdConf').dirty || passForm.get('psswdConf').touched)">
+    <p-message severity="error" text="{{'Error.MatchPassword' | translate}}" [style]="style"></p-message>
+  </div>
+  <div *ngIf="psswdConf.invalid && (psswdConf.dirty || psswdConf.touched)">
+    <div *ngIf="psswdConf.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <div class="botoes" style="margin-top: 25px">
+    <div class="spacer"></div>
+    <button pButton type="button" label="{{'Button.Confirm' | translate}}" (click)="confirmarModificar()" class="botao1"></button>
+    <button pButton type="button" label="{{'Button.Cancel' | translate}}" (click)="modificar()" class="botao2"></button>
+    <div class="spacer"></div>
+  </div>
+</div>

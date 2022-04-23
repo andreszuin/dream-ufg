@@ -1,0 +1,59 @@
+  <div class="column">
+    <button pButton icon="pi pi-arrow-left" class="voltar" (click)="voltar()"></button>
+  </div>
+  <div class="card">
+    <div class="column">
+      <img [src]="'assets/users/images/' + gestor.photo" [alt]="gestor.name"/>
+    </div>
+    <div class="card-content">
+      <!--TODO- papel do gestor dinamico-->
+      <div class="rows">
+        <span class="titles">{{'Membros.Role' | translate}}</span><span>Gestor do Projeto</span>
+      </div>
+      <div class="rows">
+        <span class="titles">{{'Membros.Name' | translate}}</span><span>{{gestor.name}}</span>
+      </div>
+      <div class="rows">
+        <span class="titles">{{'Membros.Email' | translate}}</span><span>{{gestor.email}}</span>
+      </div>
+    </div>
+  </div>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" [message]=removeMessage [header]=removeHeader acceptLabel="{{'Membros.AcceptRemove' | translate}}" rejectLabel="{{'Membros.RejectRemove' | translate}}"></p-confirmDialog>
+<div class="body" >
+  <div class="header">
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+       <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="{{'Placeholder.Search' | translate}}" (input)="dv.filter($event.target.value)">
+       </span>
+      <div class="spacer"></div>
+      <button pButton label="{{'Button.AddMembers' | translate}}" class="adicionar" (click)="adicionar()"></button>
+    </div>
+  </div>
+  <p-dataView #dv [value]="membros" [paginator]="true" [rows]="4" filterBy="name" layout="list" class="dataView">
+    <ng-template let-membro pTemplate="listItem">
+      <div class="p-col-12">
+        <div class="list-item">
+          <img [src]="'assets/users/images/' + membro.photo" [alt]="membro.name"/>
+          <div class="list-detail">
+            <div class="rows">
+              <span class="titles">{{'Membros.Name' | translate}}</span><span>{{membro.name}}</span>
+            </div>
+            <div class="rows">
+              <span class="titles">{{'Membros.Email' | translate}}</span><span>{{membro.email}}</span>
+            </div>
+            <div class="rows">
+              <span class="titles">{{'Membros.Role' | translate}}:</span><span>{{membro.papeis}}</span>
+            </div>
+          </div>
+          <div class="spacer"></div>
+          <div class="list-action">
+            <button pButton label="{{'Button.EditRoles' | translate}}" class="editar" (click)="papeis(membro.id, membro.name)"></button>
+            <button pButton label="{{'Button.Remove' | translate}}" class="remover" (click)="remover(membro.id)"></button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

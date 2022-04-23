@@ -1,0 +1,30 @@
+<div class="header">
+  <span class="title">{{'CadastroCatalogo.Title' | translate}}</span>
+</div>
+<div class="card">
+  <span class="text"> {{'CadastroCatalogo.Subtitle' | translate}}</span>
+  <div class="row">
+    <div class="column">
+      <span class="text">{{'CadastroCatalogo.Source' | translate}}</span>
+    </div>
+    <div class="spacer"></div>
+    <button pButton type="button" label="{{'CadastroCatalogo.File' | translate}}" (click)="fileInput.click()" class="upload">
+      <input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+    </button>
+    <div class="column">
+      <span>{{xmlFileName}}</span>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="column">
+    <button pButton type="button" label="{{'Button.Confirm' | translate}}" class="confirmar" (click)="send()"></button>
+  </div>
+</div>
+
+<p-dialog header="{{'Error.Validation' | translate}}" [(visible)]="validated">
+  {{'Error.ValidationContent' | translate}}
+</p-dialog>
+
+<p-dialog header="{{'Error.Exists' | translate}}" [(visible)]="registered">
+  {{'Error.ExistsContent' | translate}}
+</p-dialog>

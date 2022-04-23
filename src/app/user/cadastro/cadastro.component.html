@@ -1,0 +1,97 @@
+<div class="content" [formGroup]="userForm">
+  <h3 style="color: #063E58">{{'Cadastro.Title' | translate}}</h3>
+  <!--nome-->
+  <div class="inner" style="margin-top: 25px">
+        <input id="name" placeholder="{{'Placeholder.Name' | translate}}" type="text" class="p-inputtext p-component" formControlName="name" [style]="style">
+  </div>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <div *ngIf="name.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!-- dropdown de generos-->
+  <div class="inner" style="margin-top: 25px">
+    <p-dropdown id="genero" [options]="generos" placeholder="{{'Placeholder.Gender' | translate}}" optionLabel="label" formControlName="gender" [style]="style"></p-dropdown>
+  </div>
+  <div *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+
+    <div *ngIf="gender.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!--calendario-->
+  <div class="inner" style="margin-top: 25px">
+    <p-calendar id="birthDate" class="calendario" dateFormat="{{'Cadastro.CalendarDate' | translate}}" dataType="date" placeholder="{{'Placeholder.BirthDate' | translate}}" [yearNavigator]="true" yearRange="1970:2040" formControlName="birthDate" [style]="style" showIcon="true"></p-calendar>
+  </div>
+  <div *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+
+    <div *ngIf="birthDate.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+  <!--email-->
+    <div class="inner" style="margin-top: 25px">
+        <input id="email" pInputText placeholder="{{'Placeholder.Email' | translate}}" type="email" class="p-inputtext p-component" formControlName="email" [style]="style" >
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+
+      <div *ngIf="email.errors.required">
+        <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+      </div>
+      <div *ngIf="email.errors.email">
+        <p-message severity="error" text="{{'Error.MustBeEmail' | translate}}" [style]="style"></p-message>
+      </div>
+    </div>
+    <div *ngIf="errorMessage === 'Email já cadastrado!'">
+    <p-message severity="error" text="{{'Error.EmailExists' | translate}}" [style]="style"></p-message>
+    </div>
+
+    <div class="inner" style="margin-top: 25px">
+        <input id="emailConf" pInputText placeholder="{{'Placeholder.ConfirmEmail' | translate}}" type="email" class="p-inputtext p-component" formControlName="emailConf" [style]="style">
+    </div>
+    <div *ngIf="userForm.hasError('emailnotmatching') && (userForm.get('emailConf').dirty || userForm.get('emailConf').touched)">
+      <p-message severity="error" text="{{'Error.MatchEmail' | translate}}" [style]="style"></p-message>
+    </div>
+  <div *ngIf="emailConf.invalid && (emailConf.dirty || emailConf.touched)">
+
+     <div *ngIf="emailConf.errors.required">
+       <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+     </div>
+     <div *ngIf="emailConf.errors.email">
+       <p-message severity="error" text="{{'Error.MustBeEmail' | translate}}" [style]="style"></p-message>
+      </div>
+     </div>
+
+  <!--senha-->
+  <div class="inner" style="margin-top: 25px">
+        <input id="password" pPassword placeholder="{{'Placeholder.Password' | translate}}" type="password" class="p-inputtext p-component" formControlName="password" feedback="true" [style]="style" >
+  </div>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+
+    <div *ngIf="password.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+  <div class="inner" style="margin-top: 25px">
+        <input id="psswdConf" pPassword placeholder="{{'Placeholder.ConfirmPassword' | translate}}" type="password" class="p-inputtext p-component" formControlName="psswdConf" feedback="true" [style]="style">
+  </div>
+  <div *ngIf="userForm.hasError('passwordnotmatching') && (userForm.get('psswdConf').dirty || userForm.get('psswdConf').touched)">
+    <p-message severity="error" text="{{'Error.MatchPassword' | translate}}" [style]="style"></p-message>
+  </div>
+  <div *ngIf="psswdConf.invalid && (psswdConf.dirty || psswdConf.touched)">
+    <div *ngIf="psswdConf.errors.required">
+      <p-message severity="error" text="{{'Error.Mandatory' | translate}}" [style]="style"></p-message>
+    </div>
+  </div>
+
+  <div>
+    <p-captcha siteKey="6Ld4f-EeAAAAAIafa_8XjPuNhvE-lx36TjM3EF8k" (onResponse)="setResponse($event)"></p-captcha>
+  </div>
+  <div class="botoes" style="margin-top: 25px">
+    <div class="column2"><button pButton type="button" label="{{'Button.Register' | translate}}" (click)="send()" [disabled]="!userForm.valid || !recaptchaDone" class="cadastrar"></button></div>
+    <div class="column2"><button pButton type="button" label="{{'Button.Cancel' | translate}}" class="cancelar" routerLink="/login" routerLinkActive="active"></button></div>
+  </div>
+</div>
+
+

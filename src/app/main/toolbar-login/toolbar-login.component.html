@@ -1,0 +1,27 @@
+<div class="toolbar">
+  <div class="p-toolbar-group-left">
+    <img
+      width="200"
+      alt="Dream logo"
+      src="../../../assets/dream%20logo.png"
+    />
+  </div>
+  <div class="spacer"></div>
+  <div class="p-toolbar-group-right">
+    <button pButton icon="flag-icon flag-icon-br" class="p-button-text" (click)="changeLocale('pt')"></button>
+    <button pButton icon="flag-icon flag-icon-us" class="p-button-text" (click)="changeLocale('en')"></button>
+  </div>
+</div>
+
+<div class="content">
+
+  <router-outlet></router-outlet>
+
+
+</div>
+<p-toast key="mainToast"></p-toast>
+
+
+
+
+

@@ -1,0 +1,173 @@
+<div class="header">
+  <span class="title">{{'PesquisarCatalogo.Title' | translate}}</span>
+</div>
+
+<div class="search" id="search" *ngIf="this.view == 'search'">
+  <div class="column">
+    <p-dataView [value]="catalogos" [paginator]="true" [rows]="4" layout="list" class="dataView" filterBy="name">
+      <ng-template let-catalogo pTemplate="listItem">
+        <div class="p-col-12">
+          <div class="list-item">
+            <div class="list-detail">
+              <div class="column">
+                <span>{{catalogo.name}}</span>
+              </div>
+              <div class="spacer"></div>
+              <div class="column">
+                <div class="row">
+                  <span class="titles">{{'AssociarCatalogo.Version' | translate}}</span><span>{{catalogo.version}}</span>
+                </div>
+              </div>
+              <div class="spacer"></div>
+              <div class="column">
+                <div class="row">
+                  <button pButton icon="pi pi-chevron-right" class="botao3"(click)="showInfo(catalogo)"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</div>
+
+
+
+
+<div class="info" id="info" *ngIf="this.view == 'info'">
+  <div class="row" style="margin-bottom: 25px">
+    <button pButton icon="pi pi-arrow-left" class="botao2" (click)="voltar()"></button>
+    <button pButton icon="pi pi-print" class="botao" (click)="print()"></button>
+    <button pButton icon="pi pi-info-circle" class="botao" (click)="report()"></button>
+  </div>
+
+  <div class="row">
+    <div class="column3">
+      <p-treeTable [value]="files" [columns]="cols" selectionMode="single" [(selection)]="selectedNode" dataKey="name">
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+          <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode" *ngIf="rowData.tipo === 'bag' || rowData.tipo === 'catalogue' || rowData.tipo === 'softwarepattern'">
+            <td *ngFor="let col of columns; let i = index" class="bold">
+              <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+              {{rowData[col.field]}}
+            </td>
+          </tr>
+        </ng-template>
+      </p-treeTable>
+    </div>
+    <div class="columnInfo">
+      <div class="card">
+        <div class="catInfo" id="catInfo" *ngIf="selectedNode.data.tipo == 'catalogue'">
+          <div class="row">
+            <span class="title2 larger">{{'AssociarCatalogo.Name' | translate}}</span><span class="larger bold">{{this.selectedNode.data.name}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Version' | translate}}</span><span class="large">{{this.selectedNode.data.version}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.User' | translate}}</span><span class="large">{{this.selectedNode.data.version}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Time' | translate}}</span><span class="large">{{this.selectedNode.data.version}}</span>
+          </div>
+        </div>
+        <div class="bagInfo" id="bagInfo" *ngIf="selectedNode.data.tipo == 'bag'">
+          <div class="row">
+            <span class="title2 larger">{{'AssociarCatalogo.Name' | translate}}</span><span class="larger bold">{{this.selectedNode.data.name}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Intent' | translate}}</span><span class="large">{{this.selectedNode.data.intent}}</span>
+          </div>
+          <div class="row">
+            <span class="title2 large">{{'AssociarCatalogo.Keywords' | translate}}</span><span class="large">{{this.selectedNode.data.keywords}}</span>
+          </div>
+        </div>
+        <div class="patInfo" id="patInfo" *ngIf="selectedNode.data.tipo == 'softwarepattern'">  <!--Parei de atualizar a pagina aqui, tenho que tirar duvida sobre as informações de nivel software pattern-->
+          <div class="row" *ngIf="selectedNode.data.name">
+            <span class="title2 larger">{{'AssociarCatalogo.Name' | translate}}</span><span class="larger bold">{{selectedNode.data.name}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.type">
+            <span class="title2 larger">{{'AssociarCatalogo.Type' | translate}}</span><span class="larger bold">{{selectedNode.data.type}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.problem">
+            <span class="title2 large">{{'AssociarCatalogo.Problem' | translate}}</span><span class="large">{{selectedNode.data.problem}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.forces">
+            <span class="title2 large">{{'AssociarCatalogo.Forces' | translate}}</span><span class="large">{{selectedNode.data.forces}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.context">
+            <span class="title2 large">{{'AssociarCatalogo.Context' | translate}}</span><span class="large">{{selectedNode.data.context}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.solution">
+            <span class="title2 large">{{'AssociarCatalogo.Solution' | translate}}</span><span class="large">{{selectedNode.data.solution}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.author">
+            <span class="title2 large">{{'AssociarCatalogo.Author' | translate}}</span><span class="large">{{selectedNode.data.author}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.version">
+            <span class="title2 large">{{'AssociarCatalogo.Version' | translate}}</span><span class="large">{{selectedNode.data.version}}</span>
+          </div>
+          <div class="row" *ngIf="selectedNode.data.sources">
+            <span class="title2 large">{{'AssociarCatalogo.Sources' | translate}}</span><span class="large">{{selectedNode.data.sources}}</span>
+          </div>
+          <div id="functional" *ngIf="selectedNode.data.type == 'sopammV3:FunctionalReqPattern'">
+            <div class="column2" style="margin-left: 15px; margin-top: 20px" *ngFor="let func of selectedNode.children">
+              <div class="row">
+                <span class="title2 large">{{'AssociarCatalogo.Feature' | translate}}</span><span class="large bold">{{func.data.name}}</span>
+              </div>
+              <div class="column2" style="margin-left: 15px">
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.As' | translate}}</span><span class="large">{{func.data.como}}</span>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Ican' | translate}}</span><span class="large">{{func.data.euPosso}}</span>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.SoThat' | translate}}</span><span class="large">{{func.data.paraQue}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="nonfunctional" *ngIf="selectedNode.data.type == 'sopammV3:NonFunctionalReqPattern'">
+            <div class="column2" style="margin-left: 15px; margin-top: 20px" *ngFor="let sys of selectedNode.children">
+              <div class="row">
+                <span class="title2 large">{{'AssociarCatalogo.Property' | translate}}</span><div class="large example bold">{{sys.data.name}}</div>
+              </div>
+              <div class="row" style="margin-left: 15px">
+                <span class="title2 large">{{'AssociarCatalogo.Description' | translate}}</span><div class="large example">{{sys.data.description}}</div>
+              </div>
+            </div>
+          </div>
+          <div id="acceptance" *ngIf="selectedNode.data.type == 'sopammV3:AcceptanceTestPattern'">
+            <div class="column2" style="margin-left: 15px; margin-top: 20px" *ngFor="let test of selectedNode.children">
+              <div class="row">
+                <span class="title2 large">{{'AssociarCatalogo.TestCase' | translate}}</span><div class="large example bold">{{test.data.name}}</div>
+              </div>
+              <div class="column2" style="margin-left: 15px">
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Given' | translate}}</span><div class="large">{{test.data.sendoQue}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.When' | translate}}</span><div class="large">{{test.data.quando}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Then' | translate}}</span><div class="large">{{test.data.entao}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Scenario' | translate}}</span><div class="large">{{test.data.scenario}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.FunctionalRequirement' | translate}}</span><div class="large">{{test.data.functionalRequirement}}</div>
+                </div>
+                <div class="row">
+                  <span class="title2 large">{{'AssociarCatalogo.Examples' | translate}}</span><div class="large example">{{test.data.entries}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
