@@ -1,0 +1,220 @@
+{
+  "AdicionarMembro": {
+    "Title": "Adicionar membros",
+    "SubTitle": "Pesquisar o e-mail do usuário para adicioná-lo ao projeto:",
+    "Email": "E-mail do usuário",
+    "UserNotFound": "Não foi encontrado um usuário com o e-mail informado",
+    "IsMember": "O usuário com o e-mail informado já é membro do projeto",
+    "Options": "Marque a opção que corresponda ao perfil que o usuário irá ocupar no projeto:"
+  },
+  "AssociarCatalogo": {
+    "Summary": "Sucesso",
+    "Detail": "O catálogo foi associado com sucesso!!",
+    "Title": "Associar Catálogo",
+    "Version": "Versão:",
+    "Name": "Nome:",
+    "User": "Usuário que cadastrou:",
+    "Time": "Horário de cadastro:",
+    "Intent": "Intenção:",
+    "Keywords": "Palavras-chave:",
+    "Type": "Tipo:",
+    "Problem": "Problema:",
+    "Forces": "Forças:",
+    "Context": "Contexto:",
+    "Solution": "Solução:",
+    "Author": "Autor:",
+    "Sources": "Fontes:",
+    "Feature": "Caracteristica:",
+    "As": "Como:",
+    "Ican": "Eu posso:",
+    "SoThat": "Para que:",
+    "Property": "Propriedade do sistema:",
+    "Description": "Descrição:",
+    "TestCase": "Caso de teste:",
+    "Given": "Dado que:",
+    "When": "Quando:",
+    "Then": "Então:",
+    "Scenario": "Cenário:",
+    "FunctionalRequirement": "Requisito Funcional:",
+    "Examples": "Exemplos:"
+  },
+  "AtualizarProjeto": {
+    "Title": "Atualizar projeto",
+    "CalendarDate": "dd/mm/yy",
+    "Summary": "Sucesso",
+    "Detail": "O projeto foi atualizado com sucesso!!"
+  },
+  "Cadastro": {
+    "Title": "Realize aqui seu cadastro",
+    "CalendarDate": "dd/mm/yy",
+    "Summary": "Sucesso",
+    "Detail": "Sua conta foi criada com sucesso!!"
+  },
+  "CadastroCatalogo": {
+    "Title": "Cadastrar Catálogo",
+    "Subtitle": "Para adicionar um catálogo ele deve estar no formato XML",
+    "Source": "Fonte do arquivo:",
+    "File": "Escolher arquivo",
+    "Summary": "Sucesso",
+    "Detail": "O catálogo foi cadastrado com sucesso!!"
+  },
+  "CadastroProjeto": {
+    "Title": "Adicionar Projeto",
+    "CalendarDate": "dd/mm/yy",
+    "Summary": "Sucesso",
+    "Detail": "O projeto foi criado com sucesso!!"
+  },
+  "Dashboard": {
+    "Visiblity": "Visibilidade:",
+    "Status": "Status:",
+    "CompletionForecast": "Previsão de Término:"
+  },
+  "EditarCasos": {
+    "Title": "Editar Casos de Teste",
+    "Id": "Id:",
+    "Priority": "Prioridade:",
+    "Mandatory": "Obrigatório:",
+    "Summary": "Sucesso",
+    "Detail": "O Caso de Teste foi modificado com sucesso!!"
+  },
+  "EditarRequisitos": {
+    "Title": "Editar Requisitos",
+    "Id": "Id:",
+    "Priority": "Prioridade:",
+    "Mandatory": "Obrigatório:",
+    "Summary": "Sucesso",
+    "Detail": "O Requisito foi modificado com sucesso!!"
+  },
+  "EsqueceuSenha": {
+    "Title": "Recupere sua senha",
+    "Subtitle": "Entre com seu e-mail para recuperar sua senha de usuário:"
+  },
+  "GerenciarPapeis": {
+    "Title": "Selecione o novo perfil que {{value}} assumirá no projeto",
+    "Summary": "Sucesso",
+    "Detail": "O papel foi modificado com sucesso"
+  },
+  "InformacoesProjeto": {
+    "Visibility": "Visibilidade:",
+    "Status": "Status:",
+    "CompletionForecast": "Previsão de término:",
+    "KeyWords": "Palavras chave:",
+    "Catalogues": "Catálogos",
+    "Version": "Versão:",
+    "Specifications": "Especificações",
+    "DateFormat": "dd/MM/yyyy",
+    "FormalMessage": "*DOCX para ms-office 2007 em diante",
+    "MatrixMessage": "*XLSX para ms-office 2007 em diante",
+    "FormalHeader": "Tipo de arquivo formal",
+    "MatrixHeader": "Tipo de arquivo da matriz"
+  },
+  "Login": {
+    "Title": "Realize aqui seu login",
+    "ForgotPassword": "Esqueci a senha"
+  },
+  "Membros": {
+    "Role": "Papel:",
+    "Name": "Nome:",
+    "Email": "Email:",
+    "RemoveHeader": "Confirmar",
+    "Remove": "Tem certeza que deseja remover o membro?",
+    "AcceptRemove": "Sim",
+    "RejectRemove": "Não"
+  },
+  "Perfil": {
+    "Title": "Perfil",
+    "Name": "Nome:",
+    "BirthDate": "Data de Nascimento:",
+    "Gender": "Gênero:",
+    "Email": "E-mail:",
+    "EditProfile": "Editar perfil",
+    "CalendarDate": "dd/MM/yy",
+    "ChangePassword": "Modificar Senha"
+  },
+  "PesquisarCatalogo": {
+    "Title": "Pesquisar Catálogo"
+  },
+  "ReusarPadroes": {
+    "Title": "Reusar Padrões",
+    "Reuse": "Reusar:"
+  },
+  "Relatorio": {
+    "Project": "Projeto:",
+    "Pattern": "Padrão",
+    "ReuseNoMod": "Reúso sem modificação",
+    "ReuseMod": "Reúso com modificação",
+    "Info": "Informações",
+    "Charts": "Gráficos"
+  },
+  "MainMenu": {
+    "Profile": "Perfil",
+    "Language": "Idioma",
+    "Projects": "Projetos",
+    "Catalogue": "Catálogo",
+    "SearchCatalogue": "Pesquisar Catálogos",
+    "RegisterCatalogue": "Cadastrar Catálogo",
+    "Exit": "Sair"
+  },
+  "VisualizarPadroes": {
+    "Title": "Padrões Reusados"
+  },
+  "Button": {
+    "Add": "Adicionar",
+    "UpdateProject": "Atualizar Projeto",
+    "Register": "Cadastrar",
+    "Cancel": "Cancelar",
+    "Confirm": "Confirmar",
+    "CreateProject": "Criar Projeto",
+    "RegisterProject": "Cadastrar Projeto",
+    "Save": "Salvar",
+    "Update": "Atualizar",
+    "Send": "Enviar",
+    "Members": "Membros",
+    "Statistics": "Estatísticas",
+    "ConnectCatalogue": "Associar Catálogo",
+    "ViewPatterns": "Visualizar Padrões",
+    "Reuse": "Reusar",
+    "Requirements": "Requisitos",
+    "TestCase": "Casos de Teste",
+    "Agile": "Agil",
+    "Formal": "Formal",
+    "Matrix": "Rastreabilidade",
+    "Login": "Login",
+    "AddMembers": "Adicionar Membros",
+    "EditRoles": "Editar Papéis",
+    "Remove": "Remover",
+    "Password": "Trocar Senha",
+    "UpdateProfile": "Atualizar Cadastro",
+    "UploadPhoto": "Upload"
+  },
+  "Placeholder": {
+    "Name": "Nome",
+    "EndDate": "Previsão de término",
+    "Visibility": "Visibilidade",
+    "Status": "Status",
+    "Gender": "Gênero",
+    "BirthDate": "Data Nasc.",
+    "Email": "E-mail",
+    "ConfirmEmail": "Confirmar E-mail",
+    "Password": "Senha",
+    "ConfirmPassword": "Confirmar Senha",
+    "Keywords": "Separe as palavras-chave com virgulas",
+    "Search": "Pesquisar por nome",
+    "User": "Usuário",
+    "CurrentPassword": "Senha Atual",
+    "NewPassword": "Senha Nova",
+    "SelectProject": "Selecione um projeto",
+    "SelectType": "Selecione um tipo"
+  },
+  "Error": {
+    "Mandatory": "Campo obrigatório",
+    "MustBeEmail": "Deve ser um e-mail",
+    "EmailExists": "Este e-mail já está cadastrado",
+    "MatchEmail": "Os e-mails devem ser iguais",
+    "MatchPassword": "As senhas devem ser iguais",
+    "Validation": "Falha de Validação",
+    "ValidationContent": "Este catálogo não segue as regras de formatação do SoPaMM",
+    "Exists": "Falha de cadastro",
+    "ExistsContent": "Este catálogo já está cadastrado no sistema"
+  }
+}
